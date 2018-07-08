@@ -10,7 +10,7 @@ $(document).ready(function() {
 
     function pln_to_other (cur) {
         $.ajax({
-            url: 'http://api.nbp.pl/api/exchangerates/rates/a/' + cur + '?format=json'
+            url: 'https://api.nbp.pl/api/exchangerates/rates/a/' + cur + '?format=json'
         }).done(function(response) {
             let currency = response['rates'][0].mid;
             let amountVal = amount.val();
