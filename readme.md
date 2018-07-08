@@ -1,5 +1,5 @@
 # Currency calculator
-**IMPORTANT!** <br>__Project is not finished yet. It's currently being developed :)__<br><br>
+**IMPORTANT!** <br>Project is not finished yet. It's currently being developed :)<br><br>
 __Author__: __Wojciech Pilich__<br>
 __Contact__: __wojciech.pilich@gmail.com__<br>
 
