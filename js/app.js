@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    // finding elements
     const output = $('.output');
     const count = $('.count');
     const firstSelect = $('#first_select');
@@ -7,15 +7,15 @@ $(document).ready(function() {
     const amount = $('#amount_input');
     const arrow = $('#arrow');
 
-
-    function pln_to_other (cur) {
+    //fetching data from NBP api
+    function countResult (cur) {
         $.ajax({
             url: 'https://api.nbp.pl/api/exchangerates/rates/a/' + cur + '?format=json'
         }).done(function(response) {
             let currency = response['rates'][0].mid;
             let amountVal = amount.val();
 
-            let result = amountVal + ' pln = ' + (amountVal / currency).toFixed(2) + ` ${cur}`;
+            let result = amountVal + firstSelect.val() + ' = ' + (amountVal / currency).toFixed(2) + cur;
 
             let view = $('<span class="output">');
             view.text(result);
@@ -31,23 +31,33 @@ $(document).ready(function() {
         if(firstSelect.val() === 'pln') {
             switch (secondSelect.val()) {
                 case 'eur':
-                    pln_to_other('eur');
+                    countResult('eur');
                     break;
                 case 'usd':
-                    pln_to_other('usd');
+                    countResult('usd');
                     break;
                 case 'chf':
-                    pln_to_other('chf');
+                    countResult('chf');
                     break;
                 case 'gbp':
-                    pln_to_other('gbp');
+                    countResult('gbp');
                     break;
             }
         }
 
+        // if(firstSelect.val() === 'eur') {
+        //     switch (secondSelect.val()) {
+        //         case 'gbp':
+        //             countResult('gbp');
+        //             break;
+        //
+        //     }
+        // }
 
 
     });
+
+
 
 
 
