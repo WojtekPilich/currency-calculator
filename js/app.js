@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // finding elements
+    // finding html elements and assign them to variables
     const output = $('.output');
     const count = $('.count');
     const firstSelect = $('#first_select');
@@ -7,26 +7,11 @@ $(document).ready(function() {
     const amount = $('#amount_input');
     const arrow = $('#arrow');
 
-    //fetching data from NBP api
-    // function countResult (cur) {
-    //     $.ajax({
-    //         url: 'https://api.nbp.pl/api/exchangerates/rates/a/' + cur + '?format=json'
-    //     }).done(function(response) {
-    //         let rate = response['rates'][0].mid;
-    //         let amountVal = amount.val();
-    //
-    //         let result = amountVal + firstSelect.val() + ' = ' + (amountVal / rate).toFixed(2) + cur;
-    //
-    //         let view = $('<span class="output">');
-    //         view.text(result);
-    //
-    //         output.empty();
-    //         output.append(view);
-    //     });
-    // }
-
+    //create empty array of rates objects
     const rates = [];
-
+    //push PLN object as a first, basic and unchangeable rate which always equals to 1
+    rates.push({code:"PLN", rate: 1});
+    //push next rates objects
     $.ajax({
         url: 'https://api.nbp.pl/api/exchangerates/tables/A/?format=json'
     }).done(function(data) {
@@ -39,86 +24,65 @@ $(document).ready(function() {
             }
         }
     });
-    console.log(rates);
+    // console.log(rates);
 
-    function countResult(cur1) {
-        for(out of rates) {
-            // if (rar.code === cur1) {
-            //     // let result = amount.val() + firstSelect.val() +
-            //     //     ' = ' + (amount.val() / rar.rate).toFixed(2) + rar.code;
-            //     //
-            //     // let view = $('<span class="output">');
-            //     // view.text(result);
-            //     //
-            //     // output.empty();
-            //     // output.append(view);
-            // }
-            console.log(out);
+    // function which calculates result
+    function countResult(rate1, rate2) {
+        let result =
+            amount.val() + rate1.code
+                + ' = ' +
+                    ((amount.val() * rate1.rate) / rate2.rate).toFixed(2) + rate2.code;
+        //create a view for result
+        let view = $('<span class="output">');
+        view.text(result);
 
-        }
+        output.empty();
+        output.append(view);
     }
 
-
+    // start the function if count button is clicked
     count.on('click', function(e) {
        e.preventDefault();
+        // assign elements of rates array to variables
+        const plnRate = rates[0];
+        const usdRate = rates[1];
+        const eurRate = rates[2];
+        const chfRate = rates[3];
+        const gbpRate = rates[4];
 
        if(firstSelect.val() === 'pln') {
            switch (secondSelect.val()) {
+               case 'usd':
+                   countResult(plnRate, usdRate);
+                   break;
                case 'eur':
-                   // let result = amount.val() + firstSelect.val() +
-                   //     ' = ' + (amount.val() / rates[1].rate).toFixed(2) + rates[1].code;
-                   //
-                   // let view = $('<span class="output">');
-                   //     view.text(result);
-                   //
-                   //     output.empty();
-                   //     output.append(view);
-                   countResult('eur')
+                   countResult(plnRate, eurRate);
+                   break;
+               case 'chf':
+                   countResult(plnRate, chfRate);
+                   break;
+               case 'gbp':
+                   countResult(plnRate, gbpRate);
+                   break;
+           }
+       } else if (firstSelect.val() === 'usd') {
+           switch (secondSelect.val()) {
+               case 'pln':
+                   countResult(usdRate, plnRate);
+                   break;
+               case 'eur':
+                   countResult(usdRate, eurRate);
+                   break;
+               case 'chf':
+                   countResult(usdRate, chfRate);
+                   break;
+               case 'gbp':
+                   countResult(usdRate, gbpRate);
+                   break;
            }
        }
 
     });
-
-
-
-
-    // let result = countResult('eur');
-    // console.log(result);
-//===============================================================================
-//     count.on('click', function(e) {
-//         e.preventDefault();
-//
-//         if(firstSelect.val() === 'pln') {
-//             switch (secondSelect.val()) {
-//                 case 'eur':
-//                     countResult('eur');
-//                     break;
-//                 case 'usd':
-//                     countResult('usd');
-//                     break;
-//                 case 'chf':
-//                     countResult('chf');
-//                     break;
-//                 case 'gbp':
-//                     countResult('gbp');
-//                     break;
-//             }
-//         }
-
-        // if(firstSelect.val() === 'eur') {
-        //     switch (secondSelect.val()) {
-        //         case 'gbp':
-        //             countResult('gbp');
-        //             break;
-        //
-        //     }
-        // }
-
-
-    // });
-
-
-
 
 
 });
