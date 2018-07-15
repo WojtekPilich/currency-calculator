@@ -59,12 +59,12 @@
 }
 
 .count {
+  margin-top: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
   &__btn {
-    margin-top: 10px;
     display: inline-block;
     width: 150px;
     height: 55px;
