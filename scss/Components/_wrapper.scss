@@ -1,0 +1,87 @@
+.wrapper {
+  margin-top: -15vh;
+  min-height: 20vh;
+  min-width: 30vw;
+  padding: 4vw;
+  display: flex;
+  flex-flow: column wrap;
+
+  .entrance {
+    padding: 10px;
+
+    &__title {
+      margin-bottom: 20px;
+      font-size: $font-size-big;
+      text-align: center;
+      padding: 5px;
+    }
+  }
+}
+
+.content {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row wrap;
+  @media screen and (max-width: 600px) {
+    flex-flow: column nowrap;
+  }
+  .content__first_currency,
+  .content__second_currency,
+  .content__amount  {
+    display: flex;
+    padding: 10px;
+
+    .first_currency--select,
+    .second_currency--select {
+      background: #fff;
+      height: 40px;
+      font-family: $font-main;
+      letter-spacing: 1px;
+      font-size: $font-size-xxs;
+      font-weight: bold;
+      padding:5px;
+      border: 2px solid $color-main;
+      outline: none;
+    }
+    .content__amount__input {
+      background: #fff;
+      height: 40px;
+      width: 100px;
+      padding: 5px;
+      font-family: $font-main;
+      font-size: $font-size-xs;
+      border: 2px solid $color-main;
+      outline: none;
+    }
+  }
+}
+
+.count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__btn {
+    margin-top: 10px;
+    display: inline-block;
+    width: 150px;
+    height: 55px;
+    background-color: $color-main;
+    border: 2px solid #fff;
+    font-family: $font-main;
+    font-size: $font-size-sml;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.5s all;
+    color: #fff;
+    outline: none;
+
+    &:hover {
+      background-color: lighten($color-main, 10%);
+      cursor: pointer;
+    }
+  }
+}
+

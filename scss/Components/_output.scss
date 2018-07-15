@@ -1,0 +1,21 @@
+.output {
+  margin: 1vh;
+  height: 6vh;
+  font-size: $font-size-mid;
+  text-align: center;
+  letter-spacing: 0.1vw;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(0,0,0,0.4);
+
+  &--view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--amount-error, &--identical-error {
+    font-size: $font-size-sml;
+    color: $color-error;
+    text-shadow: 0 0 20px rgba(0,0,0,0.4);
+  }
+}

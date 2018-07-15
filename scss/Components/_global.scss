@@ -5,6 +5,7 @@
   font-size: 32px;
 }
 body {
+  font-family: $font-main;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -12,126 +13,9 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: $font-main;
   color: #fff;
   text-shadow: 0 0 20px rgba(0,0,0,0.4);
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.wrapper {
-  min-height: 300px;
-  min-width: 500px;
-  padding: 10px;
-  display: flex;
-  flex-flow: column wrap;
-  .entrance {
-    padding: 10px;
-    &__title {
-      margin-bottom: 5px;
-      font-size: 1.5rem;
-      text-align: center;
-      padding: 5px;
-    }
-  }
-}
-
-.content {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-flow: row wrap;
-  @media screen and (max-width: 600px) {
-    flex-flow: column nowrap;
-  }
-  .content__first_currency,
-  .content__second_currency,
-  .content__amount  {
-    display: flex;
-    padding: 10px;
-    .first_currency--select,
-    .second_currency--select {
-      background: #fff;
-      height: 35px;
-      font-family: $font-main;
-      letter-spacing: 1px;
-      font-size: 0.5rem;
-      font-weight: bold;
-      padding:5px;
-      border: 2px solid #223139;
-      outline: none;
-    }
-    .content__amount__input {
-      background: #fff;
-      height: 35px;
-      width: 100px;
-      padding: 5px;
-      font-family: $font-main;
-      font-size: 0.6rem;
-      border: 2px solid #223139;
-      outline: none;
-    }
-  }
-}
-
-.arrow {
-  width: 35px;
-  height: 35px;
-  transform: rotate(90deg);
-  margin: 0 5px;
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.count {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &__btn {
-    margin-top: 10px;
-    display: inline-block;
-    width: 150px;
-    height: 55px;
-    background-color: #223139;
-    border: 2px solid #fff;
-    border-radius: 25px;
-    font-family: "Neuton", serif;
-    font-size: 0.7rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: 0.5s all;
-    color: #fff;
-    outline: none;
-    &:hover {
-      background-color: lighten(#223139, 10%);
-      cursor: pointer;
-    }
-  }
-}
-
-.output {
-  height: 50px;
-  font-size: 1.1rem;
-  text-align: center;
-  color: #fff;
-  text-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
-
-.info {
-  position: fixed;
-  bottom: 50px;
-  font-size: 0.5rem;
-  letter-spacing: 1.1px;
-  text-align: center;
-  &__site {
-    color: #223139;
-    text-decoration: none;
-    transition: 0.5s all;
-    &:hover {
-      color: lighten(#223139, 15%);
-    }
-  }
 }
