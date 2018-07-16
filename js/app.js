@@ -60,7 +60,7 @@ $(document).ready(function() {
        //handling error when selected values are the same
        if(firstSelect.val() === secondSelect.val()) {
            let identicalError = $('<span class="output--identical-error"></span>');
-           let error = 'Please select different currencies';
+           let error = 'Please select two different currencies';
 
            identicalError.text(error);
            output.empty();
@@ -132,16 +132,16 @@ $(document).ready(function() {
            } else if (firstSelect.val() === 'chf') {
                switch (secondSelect.val()) {
                    case 'pln':
-                       countResult(eurRate, plnRate);
+                       countResult(chfRate, plnRate);
                        break;
                    case 'usd':
-                       countResult(eurRate, usdRate);
+                       countResult(chfRate, usdRate);
                        break;
                    case 'eur':
-                       countResult(eurRate, eurRate);
+                       countResult(chfRate, eurRate);
                        break;
                    case 'gbp':
-                       countResult(eurRate, gbpRate);
+                       countResult(chfRate, gbpRate);
                        break;
                }
 
@@ -149,16 +149,16 @@ $(document).ready(function() {
            } else if (firstSelect.val() === 'gbp') {
                switch (secondSelect.val()) {
                    case 'pln':
-                       countResult(eurRate, plnRate);
+                       countResult(gbpRate, plnRate);
                        break;
                    case 'usd':
-                       countResult(eurRate, usdRate);
+                       countResult(gbpRate, usdRate);
                        break;
                    case 'eur':
-                       countResult(eurRate, eurRate);
+                       countResult(gbpRate, eurRate);
                        break;
                    case 'chf':
-                       countResult(eurRate, chfRate);
+                       countResult(gbpRate, chfRate);
                        break;
                }
            }
